@@ -46,3 +46,9 @@ psyc <- cat %>% subset(Subject == 'PSYC')
 # need null data for 3rd year to plot properly:
 fix <- data.frame(c(NA,NA,NA,NA),c(1,2,3,4), c(NA,NA,NA,NA), c(NA,NA,NA,NA))
 colnames(fix) <- colnames(cat)
+
+# dummy data so that boxes plot with proper width
+
+dummy_4 <- data.frame(NA, 4,NA, 60) # fake data for 4th year 
+colnames(dummy_4) <- colnames(cat) 
+

@@ -13,22 +13,27 @@ shinyServer(function(input, output) {
     if(input$discipline == 2){
       df = psyc
       prog_name = "Psychology"
+      dummy = dummy_4 %>% mutate(Subject = "PSYC")#just missing 4th year
     }
     else if(input$discipline == 3){
       df = dram
       prog_name = "Drama"
+      dummy = fix # not missing any years
     }
     else if(input$discipline == 4){
       df = apsc
       prog_name = "Engineering"
+      dummy = dummy_4 %>% mutate(Subject = "APSC")#just missing 4th year
     } 
     else if(input$discipline == 5){
       df = phys
       prog_name = "Physics"
+      dummy = dummy_4 %>% mutate(Subject = "PHYS")#just missing 4th year
     } 
     else{
-      df = queens
+      df = fix
       prog_name = "Queen's"
+      dummy = fix #not missing data
     }
      
     #calculate sample sizes:
@@ -42,7 +47,7 @@ shinyServer(function(input, output) {
     year4 <- paste0("Fourth Year\nn = ", n_4, "   n = ", n_q_4) #text string for xlabel
     
     # set up data frame and title
-    df <- rbind(df, queens, fix) # combine with all queens data
+    df <- rbind(df, queens, fix, dummy) # combine with all queens data
     graph_title <- paste0(prog_name,  " CAT Scores")
     
     
@@ -68,13 +73,9 @@ shinyServer(function(input, output) {
         axis.title.x = element_blank(), # remove x axis title
         axis.text.x = element_text(size = 12) #size of x axis labels
         ) # end ggplot description 
-    
-    
-    
+     
   }#end plot expression
   ) #end render plot
-  
-  
-  
+    
 }#end function
 ) #end shiny server
