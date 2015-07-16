@@ -30,6 +30,13 @@ psyc_203 <- psyc_203 %>% filter(!is.na(CAT.Score)) %>% mutate(year = 2) %>% sele
 # combine into one data frame
 cat <- rbind(apsc_100, apsc_200, dram_100, dram_200 ,dram_400, phys_104, phys_239, psyc_100, psyc_203)
 
+queens <- cat %>% mutate(Subject = "Queens") # institutional level entry
+#calculate sample sizes:
+n_q_1 <-  sum(with(queens, year == 1 & CAT.Score > 1), na.rm = TRUE)  
+n_q_2 <-  sum(with(queens, year == 2 & CAT.Score > 1), na.rm = TRUE) 
+n_q_3 <-  sum(with(queens, year == 3 & CAT.Score > 1), na.rm = TRUE) 
+n_q_4 <-  sum(with(queens, year == 4 & CAT.Score > 1), na.rm = TRUE) 
+
 # separate into disciplines
 apsc <- cat %>% subset(Subject == 'APSC')
 dram <- cat %>% subset(Subject == 'DRAM')
