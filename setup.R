@@ -1,6 +1,10 @@
 
 # CAT boxplots test
 
+library(ggplot2)
+library(tidyr)
+library(dplyr)
+library(magrittr)# load libraries
 
 ## data
 apsc_100 = read.csv("APSC 100 CAT Scores.csv")

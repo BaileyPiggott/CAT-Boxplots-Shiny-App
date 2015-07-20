@@ -71,7 +71,8 @@ shinyServer(function(input, output) {
         legend.position = "bottom", # position legend below graph
         legend.title = element_blank(), #remove legend title
         axis.title.x = element_blank(), # remove x axis title
-        axis.text.x = element_text(size = 12) #size of x axis labels
+        axis.text.x = element_text(size = 12), #size of x axis labels
+        panel.grid.major.x = element_blank() # remove white vertical lines
         ) # end ggplot description 
      
   }#end plot expression
