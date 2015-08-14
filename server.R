@@ -8,7 +8,7 @@ source("setup.R") # load libraries and set up dataframes for each discipline
 
 shinyServer(function(input, output) {
   
-  output$catPlot <- renderPlot({
+plotInput <- reactive({
     
     if(input$discipline == 2){
       df = psyc
@@ -76,7 +76,23 @@ shinyServer(function(input, output) {
         ) # end ggplot description 
      
   }#end plot expression
-  ) #end render plot
-    
+  ) #end reactive
+
+# plot graph
+output$catPlot <- renderPlot({
+  ggsave("plot.pdf", plotInput())
+  plotInput()  
+})
+
+
+# download pdf of graph
+output$downloadPDF <- downloadHandler(
+  filename = function() {"plot.pdf"},
+  content = function(file) {
+    file.copy("plot.pdf", file, overwrite=TRUE)
+  }
+)  
+
+
 }#end function
 ) #end shiny server

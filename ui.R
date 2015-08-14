@@ -11,14 +11,16 @@ shinyUI(fluidPage(
   
   sidebarPanel(
     selectInput("discipline", "Program:",
-                c("Totals" = 1,
+                c(
                   "Psychology" = 2,
                   "Drama" = 3,
                   "Engineering" = 4,
-                  "Physics" = 5,
-                  selected = 1 # default to total
+                  "Physics" = 5
                 )#end options
-    )#end selectInput
+    ),#end selectInput
+    
+    downloadButton("downloadPDF", "Download Plot")
+    
     
   ),#end sidebar panel
   
